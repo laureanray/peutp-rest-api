@@ -1,0 +1,25 @@
+{
+  "name": "peutp-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha components/User || exit 0",
+    "test-user": "mocha components/User/ || exit 0",
+    "dev-linux": "NODE_ENV=dev node ./bin/www/server.js",
+    "production": "NODE_ENV=production node ./bin/www/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.9"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
+}
