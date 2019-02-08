@@ -1,22 +1,52 @@
-const assert = require('assert');
-let app = require('../../index');
-var chai = require('chai'), chaiHttp = require('chai-http');
+'use strict';
+
+let app = require('../../bin/www/server');
+var chai = require('chai'),
+  chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
-
-
-
 describe('USER Component', () => {
-    describe('GET /user', () => {
-        it('should respond', (done) => {
-            chai.request(app)
-                .get('/user')
-                .end((err, res) => {
-                    expect(err).to.be.null;
-                    expect(res).to.have.status(200);
-                    done();
-                });
-         
+  describe('POST /user/signup', () => {
+    const data = {
+      name: {
+        firstName: 'John',
+        lastName: 'Doe'
+      },
+      studentNumber: '2000-00000-MN-0',
+      email: 'johndoe@example.com'
+    };
+    it('should create user successfully ', done => {
+      chai
+        .request(app)
+        .post('/user/signup')
+        .set('content-type', 'application/x-www-form-urlencoded')
+        .send(data)
+        .end((err, res, body) => {
+          if (err) {
+            done(err);
+          } else {
+            expect(err).to.be.null;
+            expect(res).to.have.status(201);
+            done();
+          }
         });
+
+      it('should not allow duplicate user signup ', done => {
+        chai
+          .request(app)
+          .post('/user/signup')
+          .set('content-type', 'application/x-www-form-urlencoded')
+          .send(data)
+          .end((err, res, body) => {
+            if (err) {
+              done(err);
+            } else {
+              expect(err).to.be.null;
+              expect(res).to.have.status(201);
+              done();
+            }
+          });
+      });
     });
+  });
 });
