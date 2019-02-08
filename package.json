@@ -7,6 +7,7 @@
     "test": "mocha components/User || exit 0",
     "test-user": "mocha components/User/ || exit 0",
     "dev-linux": "NODE_ENV=dev node ./bin/www/server.js",
+    "dev-win": "NODE_ENV=dev node ./bin/www/server.js",
     "production": "NODE_ENV=production node ./bin/www/server.js"
   },
   "author": "",
