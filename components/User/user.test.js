@@ -1,8 +1,8 @@
 'use strict';
+const colors = require('colors');
 
-let app = require('../../bin/www/server');
-var chai = require('chai'),
-  chaiHttp = require('chai-http');
+let app = require('../../bin/www');
+let chai = require('chai'), chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
 describe('USER Component', () => {
