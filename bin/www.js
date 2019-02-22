@@ -1,16 +1,18 @@
 /*
+  Initialize and load config file. 
+*/  
+require('../config/config');
+
+
+/*
   Load all the modules.
   Set port 
 */  
 const colors = require('colors');
 const mongoose = require('mongoose');
 let app = require('../app');
-let port = process.env.PORT || '3000';
+let port = process.env.PORT;
 
-/*
-  Initialize and load config file. 
-*/  
-require('../config/config');
 
 
 /*
@@ -20,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
   console.log('Production'.bgGreen);
 }else if(process.env.NODE_ENV === 'test'){
   console.log('Testing Env'.bgCyan);
-}else if(process.env.NODE_ENV === 'development') {
+}else if(process.env.NODE_ENV === 'dev') {
   console.log('Development'.bgRed);
 }else{
   console.log(`[${process.env.NODE_ENV}]`)
@@ -37,7 +39,7 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  app.listen(port);
+  app.listen(port, () => { console.log(`Server is up and running on port ${port}`)});
 });
 
 module.exports = app;

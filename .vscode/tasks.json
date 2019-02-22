@@ -5,7 +5,20 @@
     "tasks": [
         {
             "type": "npm",
+            "script": "run test",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "npm",
             "script": "dev-linux",
+            "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "test",
             "group": {
                 "kind": "build",
                 "isDefault": true

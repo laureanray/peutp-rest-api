@@ -6,7 +6,6 @@ const router = express.Router();
 
 
 router.post('/signup', urlencodedParser, (req, res, next) => {
-  const name = req.body.name;
     const user = User(req.body);
     user.save(function(err, docs) {
       if (err) {

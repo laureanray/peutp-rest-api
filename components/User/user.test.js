@@ -3,8 +3,17 @@ const colors = require('colors');
 
 let app = require('../../bin/www');
 let chai = require('chai'), chaiHttp = require('chai-http');
+
 const expect = chai.expect;
+const User = require('./userModel');
 chai.use(chaiHttp);
+
+beforeEach( done => {
+    User.remove({}).then(() => {
+      done();
+    });
+});
+
 describe('USER Component', () => {
   describe('POST /user/signup', () => {
     const data = {
