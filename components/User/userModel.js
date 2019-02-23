@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   name: {
     firstName: String,
-    lastName: String,
-    suffix: {
-      type: String,
-      default: 'NA'
-    }
+    lastName: String
   },
+  birthday: Date,
+  college: String,
+  degreeProgram: String,
+  campus: String,
   studentNumber: {
     type: String,
     required: true,
@@ -17,9 +17,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
+  },
+  private: {
+    password: String
   }
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
